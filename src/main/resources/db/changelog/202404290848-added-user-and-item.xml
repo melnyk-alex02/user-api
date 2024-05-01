@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+		http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="202404290850-1" author="alex">
+        <createTable tableName="user">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="email" type="varchar(255)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="first_name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="date_of_birth" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="address" type="varchar(255)"/>
+            <column name="phone_number" type="varchar(255)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="202404290851-2" author="alex">
+        <sql>insert into user (email, first_name, last_name, date_of_birth, address, phone_number)
+             values ('john.doe@example.com', 'John', 'Doe', '1990-05-15', '123 Main St, Anytown US', '123-123-1234'),
+                    ('jane.smith@example.com', 'Jane', 'Smith', '1985-11-22', '456 Oak Rd, Someville CA', '123-123-1234'),
+                    ('bob.williams@example.com', 'Bob', 'Williams', '1980-03-01', '789 Elm Ave, Cityville TX',  '123-123-1234'),
+                    ('alice.johnson@example.com', 'Alice', 'Johnson', '1988-07-18', '321 Pine Blvd, Townsville NY', '123-123-1234'),
+                    ('tom.brown@example.com', 'Tom', 'Brown', '1975-12-31', '159 Maple Ln, Villageton OH', '123-123-1234');</sql>
+    </changeSet>
+</databaseChangeLog>
